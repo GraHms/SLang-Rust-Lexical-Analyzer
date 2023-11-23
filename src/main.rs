@@ -1,19 +1,16 @@
+// src/lib.rs or src/main.rs
 
+mod lexer;
 mod token;
 
-use token::token::{Token, TokenType, lookup_ident};
+use lexer::lexer::Lexer;
 
 fn main() {
-    let token = Token {
-        r#type: TokenType::IDENT,
-        literal: String::from("foobar"),
-        line: 1,
-        column: 1,
-    };
+    let input = "your input here".to_string();
+    let mut lexer = Lexer::new(input);
 
+    // Example usage
+    let token = lexer.next_token();
     println!("{:?}", token);
-
-    let keyword_type = lookup_ident("let");
-    println!("{:?}", keyword_type);
 }
 
